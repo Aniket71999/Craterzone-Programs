@@ -1,2 +1,2 @@
 ### Craterzone-Programs
-The programs are under solution files with name specified.
+The programs are under specified file names.
