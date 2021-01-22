@@ -1,0 +1,209 @@
+#include<iostream>
+using namespace std;
+void showboard()
+    { int board[3][3];
+     for (int i=0; i<3; i++) 
+    { 
+        for (int j=0; j<3; j++) 
+        {   board[i][j] = ' ';
+            cout<<board[i][j];  }
+    } }
+    
+void turn()
+    { 
+      cout<<"choose cells from the matrix "<<endl;
+      showboard();
+      for(i=0;i<9;i++)
+      {
+          cin>>input[i];
+	//for the firstt single turn -while loop will run
+          while(input[i]<=9&&input[i]>=1)
+           {  
+               
+              if(input[i]==1||input[i]==9)
+            {
+                if(input[i]==1)
+              {
+               comp+=2;
+               board[1][2]==input[i];
+               computerboard[0][0]==comp;
+              }
+              else
+              {
+               comp+=8;
+               board[1][0]==input[i];
+               computerboard[3][3]==comp;
+              } 
+            } 
+            
+              else if(input[i]>=2||input[i]<=8)
+             {
+                comp+=input[i];
+                
+              if(input[i]==2) //that means computer is having 3
+              { 
+                board[0][0]==input[i];  
+                computerboard[2][1]==comp;
+               }
+              else if(input[i]==3)
+              {
+                board[2][1]==input[i];  
+                computerboard[2][0]==comp;  
+              }
+              else if(input[i]==4)
+              {
+                board[2][0]==input[i];  
+                computerboard[1][1]==comp;  
+              }
+              else if(input[i]==5)
+              {
+                board[1][1]==input[i];  
+                computerboard[0][2]==comp;  
+              }
+              else if(input[i]==6)
+              {
+                   board[0][2]==input[i];  
+                computerboard[0][1]==comp;
+               }
+              else if(input[i]==7)
+              {
+                   board[0][1]==input[i];  
+                computerboard[2][2]==comp;
+               }
+              else if(input[i]==8)
+              {
+                   board[2][2]==input[i];  
+                computerboard[1][0]==comp;
+               } 
+             } 
+                 
+             else
+              {
+                  cout<<"enter another no this was filled by computer";
+              }
+              
+            computerdefend+=input[i];
+        //for the remaining turns    
+            if(computerdefend<15)
+            {
+                comp=15-computerdefend;
+		if(comp==2)
+		computerboard[0][0]==comp;
+		else if(comp==3)
+		computerboard[2][1]==comp;
+		else if(comp==4)
+		computerboard[2][0]==comp; 
+		else if(comp==5)
+		computerboard[1][1]==comp; 
+		else if(comp==6)
+		computerboard[0][2]==comp; 
+		else if(comp==7)
+		computerboard[0][1]==comp;
+		else if(comp==8)
+		computerboard[2][2]==comp; 
+		else
+		computerboard[1][0]==comp; 
+            }
+            else
+            cout<<"";
+               
+          }
+               rowcross();
+               colcross();
+               diagcross();
+               rowcompcross();
+               colcompcross();
+               diagcompcross();
+    }  
+    }
+       
+void win()
+    {if(turn==user)
+    cout<<"user has won";
+    else
+    cout<<"computer has won";
+    }
+    
+void rowcross() //if in any complete row any value is empty then not win because filled row is 15 only
+    {
+     for (i=0; i<size; i++) 
+    { 
+        if (board[i][0] != ' ')
+        cout<<win();
+    } 
+    else
+        cout<<turn();
+    }
+    
+void rowcompcross()
+    {
+     for (i=0; i<size; i++) 
+    { 
+        if (computerboard[i][0] != ' ')
+        cout<<win();
+    } 
+    else
+        cout<<turn();
+    }    
+    
+void colcross() 
+   { 
+    for (int i=0; i<size; i++) 
+    { 
+        if (board[0][i] != ' ') 
+            cout<<win();; 
+    } 
+    else
+        cout<<turn();
+} 
+
+void colcompcross() 
+   { 
+    for (int i=0; i<size; i++) 
+    { 
+        if (computerboard[0][i] != ' ') 
+            cout<<win();; 
+    } 
+    else
+        cout<<turn();
+}
+
+void diagcross() 
+   { 
+    if (board[0][0] != ' ') 
+        cout<<win(); 
+          
+    else if (board[0][2] != ' ') 
+        cout<<win(); 
+    else
+        cout<<turn(); 
+} 
+
+
+void diagcompcross() 
+   { 
+    if (computerboard[0][0] != ' ') 
+        cout<<win(); 
+          
+    else if (computerboard[0][2] != ' ') 
+        cout<<win(); 
+    else
+        cout<<turn(); 
+} 
+
+int main() 
+{
+    int user,comp=0,computerdefend=0;
+   int size=3, i, j, input[9], board[3][3], computerboard[3][3];
+   int b[3][3] = { {2,7,6} , {9,5,1} , {4,3,1} };
+   cout<<"The matrix is:"<<endl;
+   for(i=0; i<3; ++i) {
+      for(j=0; j<3; j++)
+      cout<<b[i][j]<<" ";
+      cout<<endl;
+   }
+    cout<<endl;
+    cout<<"turn of user, computer will occupy its place accordingly";
+    turn();
+    return 0;
+}

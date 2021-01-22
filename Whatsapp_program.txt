@@ -1,0 +1,148 @@
+#include <iostream>
+using namespace std;
+class user
+{
+    public:
+    status st;
+    message mt;
+    int ch;
+    void action()
+    {   cout<<"enter choice 1. contact 2. status 3. message";
+        cin>>ch;
+        switch(ch)
+    {
+        case 1:
+        contact().details();
+        contact().display();
+        break;
+        case 2:
+        status().enterstatus();
+        status().dispstatus();
+        break;
+        case 3:
+        message().messages();
+        break;
+        default:
+        cout<<"invalid choice";
+    
+};
+class contact: public user
+{
+   public:
+   string name,details;
+   int no;
+   void details()
+   {
+       cout<<"contact name";
+       cin>>name;
+       cout<<"details"
+       cin>>details;
+       cout<<"number";
+       cin>>no;
+   }
+   void display()
+   {
+       cout<<"contact :";
+       cout<<name<<details<<no;
+   }   
+};
+class status
+{
+    Private: //encapsulation data hiding
+status(){
+    string statuses, mesg;
+} 
+Public:
+    void enterstatus()
+    {
+        cout<<"text or image";
+        cin>>statuses;
+        if(statuses=='text')
+            cin>>mesg;
+        else
+            cout<<"upload image";
+    }
+    void dispstatus()
+    {
+        contact c1;
+        c1.details();
+    }
+};
+class message
+{      
+    public:
+text t1();
+Image i1(12,2,4,a);
+video v1();
+audio aaa1();
+    };
+class text 
+{ public:
+text()
+{string texts;
+cout<<”enter text”;
+cin>>texts;
+}
+};
+class Image
+{
+private:
+    typedef void (Image::*bool_type)() const;
+    public:
+    struct NullDeleter
+    {
+        void operator()(unsigned char* imageData) { /* does nothing */ }
+    };
+    typedef std::map<std::string, std::string> ImageContext;
+    Image();
+    Image(int width, int height, int depth);
+    Image(int width, int height, int depth, unsigned char* data);
+    template <Deleter>
+    Image(int width, int height, int depth, unsigned char* data,
+            Deleter deleter) :
+        width_(width),
+        height_(height),
+        depth_(depth),
+        bytesPerPixel_((depth+7)/8),
+        size_(width*height*((depth+7)/8)),
+        data_(data, deleter)
+    {
+    }
+    ~Image();
+    static Image createFromData(int width, int height, int depth,
+        const unsigned char* data);
+    Image clone() const;
+    int width() const;
+    int height() const;
+    int depth() const;
+    int size() const;
+    int bytesPerPixel() const;
+    int numberOfPixels() const;
+    const unsigned char* data() const;
+    operator bool_type() const;
+};
+class video
+{ public:
+video()
+{
+String videolength,videoname;
+cout<<”video characteristics”;
+cin>>videolength>>videoname;}
+};
+class audio
+{ public:
+audio()
+{
+String audiolength,audioname;
+cout<<”audio characteristics”;
+cin>>audiolength>>audioname;}
+};
+int main()
+{
+   user u1;
+u1.action();
+contact c1;
+c1.details();
+c1.display();
+    return 0;
+}
